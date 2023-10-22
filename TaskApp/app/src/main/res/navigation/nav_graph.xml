@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/spashFragment">
+
+    <fragment
+        android:id="@+id/spashFragment"
+        android:name="com.example.taskapp.ui.SpashFragment"
+        android:label="fragment_spash"
+        tools:layout="@layout/fragment_spash" >
+        <action
+            android:id="@+id/action_spashFragment_to_loguinFragment"
+            app:destination="@id/authentication"
+            app:popUpTo="@id/spashFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <navigation android:id="@+id/authentication"
+        app:startDestination="@id/loguinFragment">
+        <fragment
+            android:id="@+id/recoverAccountFragment"
+            android:name="com.example.taskapp.ui.auth.RecoverAccountFragment"
+            android:label="fragment_recover_account"
+            tools:layout="@layout/fragment_recover_account" />
+        <fragment
+            android:id="@+id/registerFragment"
+            android:name="com.example.taskapp.ui.auth.RegisterFragment"
+            android:label="fragment_register"
+            tools:layout="@layout/fragment_register" />
+        <fragment
+            android:id="@+id/loguinFragment"
+            android:name="com.example.taskapp.ui.auth.LoguinFragment"
+            android:label="fragment_loguin"
+            tools:layout="@layout/fragment_loguin">
+            <action
+                android:id="@+id/action_loguinFragment_to_recoverAccountFragment"
+                app:destination="@id/recoverAccountFragment" />
+            <action
+                android:id="@+id/action_loguinFragment_to_registerFragment"
+                app:destination="@id/registerFragment" />
+        </fragment>
+        <action
+            android:id="@+id/action_global_homeFragment"
+            app:destination="@id/homeFragment" />
+    </navigation>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.taskapp.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_formTaskFragment"
+            app:destination="@id/formTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/formTaskFragment"
+        android:name="com.example.taskapp.ui.FormTaskFragment"
+        android:label="fragment_form_task"
+        tools:layout="@layout/fragment_form_task" />
+</navigation>
