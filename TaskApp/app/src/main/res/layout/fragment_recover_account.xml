@@ -65,20 +65,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="@string/dg_email"
                 android:inputType="textEmailAddress"
-                android:padding="16dp" />
+                style="@style/EditTextTheme" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEnviar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"
-                android:text="Enviar"
-                android:textColor="@color/color_default"
-                app:backgroundTint="@null" />
+                android:text="@string/salvar"
+                app:backgroundTint="@null"
+                style="@style/ButtomTheme"/>
 
 
             <LinearLayout

@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentLoguinBinding
+import com.example.taskapp.util.showBottomSheet
 
 
 class LoguinFragment : Fragment() {
@@ -53,12 +53,13 @@ class LoguinFragment : Fragment() {
             if (password.isNotEmpty()) {
                 findNavController().navigate(R.id.action_global_homeFragment)
             } else {
-                Toast.makeText(requireContext(), "Preencha sua senha", Toast.LENGTH_LONG).show()
+                showBottomSheet(message = getString(R.string.preencha_sua_senha))
             }
         } else {
-            Toast.makeText(requireContext(), "Preencha seu email", Toast.LENGTH_LONG).show()
+            showBottomSheet(message = getString(R.string.preencha_seu_email))
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

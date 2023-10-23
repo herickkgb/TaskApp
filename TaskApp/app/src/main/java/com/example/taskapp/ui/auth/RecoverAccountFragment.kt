@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentRecoverAccountBinding
 import com.example.taskapp.util.initToolbar
+import com.example.taskapp.util.showBottomSheet
 
 
 class RecoverAccountFragment : Fragment() {
@@ -33,7 +35,7 @@ class RecoverAccountFragment : Fragment() {
         _binding = null
     }
 
-    fun initListener(){
+    fun initListener() {
         binding.btnEnviar.setOnClickListener {
             validadeData()
         }
@@ -44,10 +46,10 @@ class RecoverAccountFragment : Fragment() {
 
         if (email.isNotEmpty()) {
 
-                Toast.makeText(requireContext(), "Tudo certo", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Tudo certo", Toast.LENGTH_LONG).show()
 
         } else {
-            Toast.makeText(requireContext(), "Preencha um e-mail válido", Toast.LENGTH_LONG).show()
+            showBottomSheet(message = getString(R.string.recover_preencha_um_e_mail_v_lido))
         }
     }
 

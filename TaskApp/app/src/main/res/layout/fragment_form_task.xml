@@ -51,13 +51,12 @@
 
             <EditText
                 android:id="@+id/editDescription"
+                style="@style/EditTextTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="@string/criar_nova_tela_de_login_do_app"
                 android:inputType="text"
-                android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -87,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
-                    android:text="A fazer"
+                    android:text="@string/a_fazer"
                     android:textColor="@color/white"
                     android:visibility="visible" />
 
@@ -97,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/white"
-                    android:text="Fazendo"
+                    android:text="@string/fazendo"
                     android:textColor="@color/white" />
 
                 <RadioButton
@@ -106,21 +105,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/white"
-                    android:text="Feitas"
+                    android:text="@string/feitas"
                     android:textColor="@color/white" />
 
             </RadioGroup>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_save"
+                style="@style/ButtomTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"
-                android:text="Salvar"
-                android:textAllCaps="false"
+                android:text="@string/salvar"
                 android:textColor="@color/color_default"
-                app:backgroundTint="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroup" />

@@ -11,6 +11,7 @@ import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentDoneBinding
 import com.example.taskapp.databinding.FragmentFormTaskBinding
 import com.example.taskapp.util.initToolbar
+import com.example.taskapp.util.showBottomSheet
 
 class FormTaskFragment : Fragment() {
 
@@ -31,11 +32,6 @@ class FormTaskFragment : Fragment() {
         initListener()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     private fun initListener() {
         binding.btnSave.setOnClickListener {
             validadeData()
@@ -50,9 +46,13 @@ class FormTaskFragment : Fragment() {
         if (description.isNotEmpty()) {
             Toast.makeText(requireContext(), "Tudo certo!", Toast.LENGTH_LONG).show()
         } else {
-            Toast.makeText(requireContext(), "Preencha seu email", Toast.LENGTH_LONG).show()
+            showBottomSheet(message = getString(R.string.FormTask_preencha_seu_email))
         }
+
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

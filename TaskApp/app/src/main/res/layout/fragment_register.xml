@@ -15,15 +15,14 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/color_default"
-            >
+            android:background="@color/color_default">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:navigationIcon="@drawable/ic_back"
-                app:elevation="2dp">
+                app:elevation="2dp"
+                app:navigationIcon="@drawable/ic_back">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -48,19 +47,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/nm_email"
                 android:layout_marginTop="16dp"
+                android:text="@string/nm_email"
                 android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/edit_email"
+                style="@style/EditTextTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="@string/dg_email"
-                android:inputType="textEmailAddress"
-                android:padding="16dp" />
+                android:inputType="textEmailAddress" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,24 +69,21 @@
 
             <EditText
                 android:id="@+id/edit_password"
+                style="@style/EditTextTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="@string/dg_senha"
-                android:inputType="textPassword"
-                android:padding="16dp" />
+                android:inputType="textPassword" />
 
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRegister"
+                style="@style/ButtomTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"
-                android:text="Criar conta"
-                android:textColor="@color/color_default"
-                app:backgroundTint="@null" />
+                android:text="@string/criar_conta" />
 
             <LinearLayout
                 android:layout_width="match_parent"
