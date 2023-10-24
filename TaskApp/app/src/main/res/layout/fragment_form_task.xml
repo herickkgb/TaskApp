@@ -29,7 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Nova tarefa"
+                    android:text="@string/text_title_toolbar_form_task_fragment"
                     android:textColor="@color/white" />
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
@@ -44,7 +44,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Descrição"
+                android:text="@string/text_description_form_task_fragment"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="@string/criar_nova_tela_de_login_do_app"
+                android:hint="@string/hint_edit_description_form_task_fragment"
                 android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
-                    android:text="@string/a_fazer"
+                    android:text="@string/status_task_todo"
                     android:textColor="@color/white"
                     android:visibility="visible" />
 
@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/white"
-                    android:text="@string/fazendo"
+                    android:text="@string/status_task_doing"
                     android:textColor="@color/white" />
 
                 <RadioButton
@@ -105,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/white"
-                    android:text="@string/feitas"
+                    android:text="@string/status_task_done"
                     android:textColor="@color/white" />
 
             </RadioGroup>
@@ -116,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/salvar"
+                android:text="@string/text_button_form_task_fragment"
                 android:textColor="@color/color_default"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -24,10 +24,10 @@ fun Fragment.showBottomSheet(
     val binding: BottomSheetBinding =
         BottomSheetBinding.inflate(layoutInflater, null, false)
 
-    binding.txtTitle.text = getText(titleDialog ?: R.string.atencao)
+    binding.txtTitle.text = getText(titleDialog ?: R.string.text_title_warning)
 
     binding.txtMensage.text = message
-    binding.btnOk.text = getText(titleButton ?: R.string.textButton)
+    binding.btnOk.text = getText(titleButton ?: R.string.text_button_warning)
     binding.btnOk.setOnClickListener {
         onClick()
         bottomSheetDialog.dismiss()

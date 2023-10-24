@@ -1,41 +1,43 @@
 <resources>
     <string name="app_name">TaskApp</string>
 
-    <string name="txt_recuperar_conta">Informe seu e-mail e clique em enviar para receber o código de recuperação</string>
-
     <!--    Status Task-->
     <string name="status_task_todo">A Fazer</string>
     <string name="status_task_doing">Fazendo</string>
     <string name="status_task_done">Feitas</string>
 
+    <!--    Generic-->
+    <string name="text_title_warning">Atenção</string>
+    <string name="text_button_warning">Entendi</string>
+    <string name="hint_edit_email">Digite seu e-mail</string>
+    <string name="email_text">E-mail</string>
+    <string name="email_empty">Informe seu e-mail.</string>
+    <string name="password_text">Senha</string>
+    <string name="password_empty">Informe sua senha.</string>
+    <string name="hint_edit_password">Digite sua senha</string>
 
-    <!--   Generics-->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="criar_nova_tela_de_login_do_app">Criar nova tela de login do app</string>
-    <string name="add_text">Botão adicionare nova tarefa</string>
-    <string name="preencha_sua_senha">Preencha sua senha</string>
-    <string name="preencha_seu_email">Preencha seu email</string>
-    <string name="atencao">Atenção</string>
-    <string name="textButton">Entendi</string>
-    <string name="tudo_certo">Tudo certo</string>
-    <string name="dg_email">Digite seu e-mail</string>
-    <string name="nm_email">E-mail</string>
-    <string name="nm_senha">senha</string>
-    <string name="dg_senha">Digite sua Senha</string>
-    <string name="rcpr_conta">Recuperar Conta</string>
-    <string name="criar_conta">Criar conta</string>
+    <!--    Login Fragment-->
+    <string name="text_title_login_fragment">Login</string>
+    <string name="text_button_register_login_fragment">Criar conta</string>
+    <string name="text_button_recover_login_fragment">Recuperar conta</string>
 
+    <!--    Register Fragment-->
+    <string name="email_empty_register_fragment">Informe um e-mail válido.</string>
+    <string name="password_empty_register_fragment">Informe uma senha.</string>
+    <string name="text_button_register_fragment">Criar conta</string>
+    <string name="text_title_toolbar_register_fragment">Criar conta</string>
 
-    <string name="Register_fragment_preencha_uma_senha">Preencha uma senha</string>
-    <string name="register_fragment_preencha_um_e_mail_v_lido">Preencha um e-mail válido</string>
-    <string name="recover_tudo_certo">Tudo certo</string>
-    <string name="recover_preencha_um_e_mail_v_lido">Preencha um e-mail válido</string>
-    <string name="FormTask_preencha_seu_email">Preencha seu email</string>
-    <string name="btn_login">Login</string>
-    <string name="a_fazer">A fazer</string>
-    <string name="fazendo">Fazendo</string>
-    <string name="feitas">Feitas</string>
-    <string name="salvar">Salvar</string>
+    <!--    Recover Account Fragment-->
+    <string name="text_info_recover_account_fragment">Informe seu e-mail de cadastro para receber \num link para alteração da senha.</string>
+    <string name="text_title_toolbar_recover_account_fragment">Recuperar conta</string>
+    <string name="text_button_recover_account_fragment">Enviar</string>
 
+    <!--    Form Task Fragment-->
+    <string name="text_title_toolbar_form_task_fragment">Nova tarefa</string>
+    <string name="description_empty_form_task_fragment">Informe uma descrição.</string>
+    <string name="text_status_form_task_fragment">Status</string>
+    <string name="text_description_form_task_fragment">Descrição</string>
+    <string name="hint_edit_description_form_task_fragment">Criar nova tela de login do app</string>
+    <string name="text_button_form_task_fragment">Salvar</string>
 
 </resources>

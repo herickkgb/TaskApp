@@ -49,7 +49,7 @@ class RecoverAccountFragment : Fragment() {
             Toast.makeText(requireContext(), "Tudo certo", Toast.LENGTH_LONG).show()
 
         } else {
-            showBottomSheet(message = getString(R.string.recover_preencha_um_e_mail_v_lido))
+            showBottomSheet(message = getString(R.string.email_empty_register_fragment))
         }
     }
 

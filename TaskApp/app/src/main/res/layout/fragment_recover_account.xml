@@ -49,14 +49,14 @@
                 android:layout_marginTop="16dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="@string/txt_recuperar_conta"
+                android:text="@string/text_info_recover_account_fragment"
                 android:textColor="@color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="@string/nm_email"
+                android:text="@string/email_empty"
                 android:textColor="@color/white" />
 
 
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:hint="@string/dg_email"
+                android:hint="@string/hint_edit_email"
                 android:inputType="textEmailAddress"
                 style="@style/EditTextTheme" />
 
@@ -74,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/salvar"
+                android:text="@string/text_button_recover_account_fragment"
                 app:backgroundTint="@null"
                 style="@style/ButtomTheme"/>
 

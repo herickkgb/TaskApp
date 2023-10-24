@@ -53,10 +53,10 @@ class LoguinFragment : Fragment() {
             if (password.isNotEmpty()) {
                 findNavController().navigate(R.id.action_global_homeFragment)
             } else {
-                showBottomSheet(message = getString(R.string.preencha_sua_senha))
+                showBottomSheet(message = getString(R.string.password_empty_register_fragment))
             }
         } else {
-            showBottomSheet(message = getString(R.string.preencha_seu_email))
+            showBottomSheet(message = getString(R.string.email_empty_register_fragment))
         }
     }
 

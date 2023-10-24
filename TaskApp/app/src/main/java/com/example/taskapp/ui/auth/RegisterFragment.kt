@@ -49,13 +49,13 @@ class RegisterFragment : Fragment() {
 
         if (email.isNotEmpty()) {
             if (password.isNotEmpty()) {
-                showBottomSheet(message = getString(R.string.tudo_certo))
+                showBottomSheet(message = "Tudo Certo")
 
             } else {
-                showBottomSheet(message = getString(R.string.Register_fragment_preencha_uma_senha))
+                showBottomSheet(message = getString(R.string.password_empty_register_fragment))
             }
         } else {
-            showBottomSheet(message = getString(R.string.register_fragment_preencha_um_e_mail_v_lido))
+            showBottomSheet(message = getString(R.string.email_empty_register_fragment))
         }
     }
 

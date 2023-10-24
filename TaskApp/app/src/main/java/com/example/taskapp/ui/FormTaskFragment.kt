@@ -46,7 +46,7 @@ class FormTaskFragment : Fragment() {
         if (description.isNotEmpty()) {
             Toast.makeText(requireContext(), "Tudo certo!", Toast.LENGTH_LONG).show()
         } else {
-            showBottomSheet(message = getString(R.string.FormTask_preencha_seu_email))
+            showBottomSheet(message = getString(R.string.text_description_form_task_fragment))
         }
 
     }
