@@ -35,7 +35,7 @@
             <ImageButton
                 android:id="@+id/btn_back"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_back"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_edit"
@@ -99,7 +99,7 @@
             <ImageButton
                 android:id="@+id/btn_next"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_next"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_edit"

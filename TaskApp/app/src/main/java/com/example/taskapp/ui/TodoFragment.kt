@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taskapp.R
@@ -31,7 +32,8 @@ class TodoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initListener()
 
-        initRecyclerView(getTask())
+        initRecyclerView()
+        getTask()
     }
 
     private fun initListener() {
@@ -40,26 +42,54 @@ class TodoFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerView(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(taskList)
+    private fun initRecyclerView() {
+        taskAdapter = TaskAdapter(requireContext()) { task, option ->
+            optionSelected(task, option)
+        }
 
-        binding.rvTask.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvTask.setHasFixedSize(true)
-        binding.rvTask.adapter = taskAdapter
+        with(binding.rvTask) {
+            LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            adapter = taskAdapter
+        }
+
+
     }
 
-    private fun getTask() = listOf<Task>(
-        Task("1", "Realizar pesquisa de mercado para o novo produto", Status.TODO),
-        Task("2", "Escrever relatório de vendas do último trimestre", Status.TODO),
-        Task("3", "Agendar reunião de equipe para a próxima semana", Status.TODO),
-        Task("4", "Revisar o conteúdo do site e atualizar informações", Status.TODO),
-        Task("5", "Preparar apresentação para o cliente sobre os resultados do projeto", Status.TODO),
-        Task("6", "Enviar convites para o evento de lançamento do produto", Status.TODO),
-        Task("7", "Conduzir treinamento para novos funcionários", Status.TODO),
-        Task("8", "Criar campanha de marketing nas redes sociais", Status.TODO),
-        Task("9", "Desenvolver um protótipo de design de interface de usuário para o aplicativo móvel", Status.TODO),
-        Task("10", "Analisar dados de pesquisa de satisfação do cliente", Status.TODO)
-    )
+    private fun optionSelected(task: Task, option: Int) {
+        when (option) {
+            TaskAdapter.SELECT_REMOVE -> {
+                Toast.makeText(requireContext(), "Removendo ${task.description}", Toast.LENGTH_LONG)
+                    .show()
+            }
+
+            TaskAdapter.SELECT_NEXT -> {
+                Toast.makeText(requireContext(), "Next ${task.description}", Toast.LENGTH_LONG)
+                    .show()
+            }
+
+            TaskAdapter.SELECT_DETAILS -> {
+                Toast.makeText(requireContext(), "Detalhes ${task.description}", Toast.LENGTH_LONG)
+                    .show()
+            }
+
+            TaskAdapter.SELECT_EDIT -> {
+                Toast.makeText(requireContext(), "Editando ${task.description}", Toast.LENGTH_LONG)
+                    .show()
+            }
+        }
+    }
+
+    private fun getTask() {
+        val taskList = listOf(
+            Task("1", "Realizar pesquisa de mercado para o novo produto", Status.TODO),
+            Task("2", "Escrever relatório de vendas do último trimestre", Status.TODO),
+            Task("3", "Agendar reunião de equipe para a próxima semana", Status.TODO),
+            Task("4", "Revisar o conteúdo do site e atualizar informações", Status.TODO),
+            Task("5", "Enviar convites para o evento de lançamento do produto", Status.TODO),
+        )
+        taskAdapter.submitList(taskList)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
