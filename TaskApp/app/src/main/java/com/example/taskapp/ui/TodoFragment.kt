@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taskapp.R
@@ -15,6 +16,7 @@ import com.example.taskapp.data.model.Task
 import com.example.taskapp.databinding.FragmentHomeBinding
 import com.example.taskapp.databinding.FragmentTodokBinding
 import com.example.taskapp.ui.adapter.TaskAdapter
+import com.example.taskapp.util.showBottomSheet
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -33,9 +35,10 @@ class TodoFragment : Fragment() {
     private lateinit var reference: DatabaseReference
     private lateinit var auth: FirebaseAuth
 
+    private val viewModel: TaskViewModel by activityViewModels()
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentTodokBinding.inflate(inflater, container, false)
         return binding.root
@@ -55,7 +58,33 @@ class TodoFragment : Fragment() {
 
     private fun initListener() {
         binding.fadAdd.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_formTaskFragment)
+            val action = HomeFragmentDirections.actionHomeFragmentToFormTaskFragment(null)
+            findNavController().navigate(action)
+        }
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        viewModel.taskUpdate.observe(viewLifecycleOwner) { updateTask ->
+            if (updateTask.status == Status.TODO) {
+                //armazena a lista atual doadapter
+                val oldList = taskAdapter.currentList
+
+                //gera uma nova lista a partir da lista antiga já com a tarefa atualizada
+                val newList = oldList.toMutableList().apply {
+                    find { it.id == updateTask.id }?.description == updateTask.description
+                }
+
+                //armazena a posição da tarefa a ser atualizada na lista
+                val position = newList.indexOfFirst { it.id == updateTask.id }
+
+                //envia a lista atualizada para o adapter
+                taskAdapter.submitList(newList)
+
+                //atualiza a tarefa pela posição do adapter
+                taskAdapter.notifyItemChanged(position)
+            }
+
         }
     }
 
@@ -76,8 +105,12 @@ class TodoFragment : Fragment() {
     private fun optionSelected(task: Task, option: Int) {
         when (option) {
             TaskAdapter.SELECT_REMOVE -> {
-                Toast.makeText(requireContext(), "Removendo ${task.description}", Toast.LENGTH_LONG)
-                    .show()
+                showBottomSheet(titleDialog = R.string.text_title_dialog_delete,
+                    message = getString(R.string.text_message_dialog_delete),
+                    titleButton = R.string.text_button_dialog_confirm_logout,
+                    onClick = {
+                        deleteTask(task)
+                    })
             }
 
             TaskAdapter.SELECT_NEXT -> {
@@ -86,31 +119,32 @@ class TodoFragment : Fragment() {
             }
 
             TaskAdapter.SELECT_DETAILS -> {
-                Toast.makeText(requireContext(), "Detalhes ${task.description}", Toast.LENGTH_LONG)
+                Toast.makeText(requireContext(), "Editando ${task.description}", Toast.LENGTH_LONG)
                     .show()
             }
 
             TaskAdapter.SELECT_EDIT -> {
-                Toast.makeText(requireContext(), "Editando ${task.description}", Toast.LENGTH_LONG)
-                    .show()
+                val action = HomeFragmentDirections.actionHomeFragmentToFormTaskFragment(task)
+                findNavController().navigate(action)
             }
         }
     }
 
     private fun getTask() {
-        reference.child("tasks")
-            .child(auth.currentUser?.uid ?: "")
+        reference.child("tasks").child(auth.currentUser?.uid ?: "")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val taskList = mutableListOf<Task>()
                     for (ds in snapshot.children) {
                         val task = ds.getValue(Task::class.java) as Task
-                       if (task.status == Status.TODO){
-                           taskList.add(task)
-                       }
+                        if (task.status == Status.TODO) {
+                            taskList.add(task)
+                        }
                     }
                     binding.progressBar.isVisible = false
                     listEmpty(taskList)
+
+                    taskList.reverse()
 
                     taskAdapter.submitList(taskList)
                 }
@@ -123,12 +157,26 @@ class TodoFragment : Fragment() {
             })
     }
 
-    private fun listEmpty(taskList: List<Task>) {
-            binding.textInfo.text = if (taskList.isEmpty()) {
-                getString(R.string.text_list_task_empty)
-            } else {
-                ""
+    private fun deleteTask(task: Task) {
+        reference.child("tasks").child(auth.currentUser?.uid ?: "").child(task.id).removeValue()
+            .addOnCompleteListener { result ->
+                if (result.isSuccessful) {
+                    Toast.makeText(requireContext(), R.string.text_delete_task, Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Toast.makeText(requireContext(), R.string.erro_generic, Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
+
+    }
+
+    private fun listEmpty(taskList: List<Task>) {
+        binding.textInfo.text = if (taskList.isEmpty()) {
+            getString(R.string.text_list_task_empty)
+        } else {
+            ""
+        }
     }
 
 

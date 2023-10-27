@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.taskapp.R
 import com.example.taskapp.data.model.Status
 import com.example.taskapp.data.model.Task
@@ -30,8 +32,12 @@ class FormTaskFragment : Fragment() {
     private var newtask: Boolean = true
     private var status: Status = Status.TODO
 
+    private val args: FormTaskFragmentArgs by navArgs()
+
     private lateinit var reference: DatabaseReference
     private lateinit var auth: FirebaseAuth
+
+    private val viewModel: TaskViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -47,8 +53,19 @@ class FormTaskFragment : Fragment() {
         reference = Firebase.database.reference
         auth = Firebase.auth
 
-
+        getArgs()
         initListener()
+    }
+
+    private fun getArgs() {
+        args.task.let { it ->
+            if (it != null) {
+                this.task = it
+
+                configTask()
+            }
+
+        }
     }
 
     private fun initListener() {
@@ -63,14 +80,36 @@ class FormTaskFragment : Fragment() {
         }
     }
 
+    private fun configTask() {
+        newtask = false
+        status = task.status
+        binding.textToolbar.text = getString(R.string.text_toolbar_update_form_task)
+
+
+        binding.editDescription.setText(task.description)
+        setStatus()
+    }
+
+    private fun setStatus() {
+        binding.radioGroup.check(
+            when (task.status) {
+                Status.TODO -> R.id.rd_Todo
+                Status.DONE -> R.id.rd_Done
+                else -> R.id.rd_Doing
+            }
+        )
+    }
+
     fun validadeData() {
         var description = binding.editDescription.text.toString().trim()
 
         if (description.isNotEmpty()) {
             binding.progressBar.isVisible = true
 
-            if (newtask) task = Task()
-            task.id = reference.database.reference.push().key ?: ""
+            if (newtask) {
+                task = Task()
+                task.id = reference.database.reference.push().key ?: ""
+            }
             task.description = description
             task.status = status
 
@@ -82,10 +121,8 @@ class FormTaskFragment : Fragment() {
     }
 
     private fun saveTask() {
-        reference.child("tasks")
-            .child(auth.currentUser?.uid ?: "")
-            .child(task.id)
-            .setValue(task).addOnCompleteListener { result ->
+        reference.child("tasks").child(auth.currentUser?.uid ?: "").child(task.id).setValue(task)
+            .addOnCompleteListener { result ->
                 if (result.isSuccessful) {
                     Toast.makeText(
                         requireContext(),
@@ -93,12 +130,14 @@ class FormTaskFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
 
-
                     if (newtask) {
                         findNavController().popBackStack()
-                    }else{
+                    } else {
+                        viewModel.setUpdateTask(task)
+
                         binding.progressBar.isVisible = false
                     }
+
                 } else {
                     showBottomSheet(message = getString(R.string.erro_generic))
                     binding.progressBar.isVisible = false

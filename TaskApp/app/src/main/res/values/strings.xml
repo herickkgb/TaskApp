@@ -18,6 +18,9 @@
     <string name="password_empty">Informe sua senha.</string>
     <string name="hint_edit_password">Digite sua senha</string>
     <string name="erro_generic">Ocorreu um erro! Por favor tente novamente mais tarde</string>
+    <string name="text_delete_task">Tarefa removida com sucesso</string>
+    <string name="text_title_dialog_delete">Deseja remover esta tarefa?</string>
+    <string name="text_message_dialog_delete">Aperte em comfirmar para remover a tarefa</string>
 
     <!--    Login Fragment-->
     <string name="text_title_login_fragment">Login</string>
@@ -49,6 +52,7 @@
     <string name="hint_edit_description_form_task_fragment">Criar nova tela de login do app</string>
     <string name="text_button_form_task_fragment">Salvar</string>
     <string name="text_save_sucess_form_task_fragment">Tarefa salva com sucesso</string>
+    <string name="text_toolbar_update_form_task">Editando tarefa...</string>
 
 
 </resources>
