@@ -10,6 +10,7 @@
         android:id="@+id/rvTask"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        tools:itemCount="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,6 +18,33 @@
         tools:listitem="@layout/item_task"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:indeterminateTint="@color/white" />
+
+        <TextView
+            android:id="@+id/textInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/text_load_task"
+            android:textColor="@color/white"
+            tools:text="Aguarde, estamos carregando as informações" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

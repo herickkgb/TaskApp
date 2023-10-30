@@ -1,6 +1,7 @@
 package com.example.taskapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -79,7 +80,6 @@ class TodoFragment : Fragment() {
                 //atualiza a tarefa pela posição do adapter
                 taskAdapter.notifyItemChanged(position)
             }
-
         }
     }
 
@@ -93,7 +93,6 @@ class TodoFragment : Fragment() {
             setHasFixedSize(true)
             adapter = taskAdapter
         }
-
 
     }
 
@@ -115,7 +114,7 @@ class TodoFragment : Fragment() {
             }
 
             TaskAdapter.SELECT_DETAILS -> {
-                Toast.makeText(requireContext(), "Editando ${task.description}", Toast.LENGTH_LONG)
+                Toast.makeText(requireContext(), task.description, Toast.LENGTH_LONG)
                     .show()
             }
 
@@ -136,7 +135,7 @@ class TodoFragment : Fragment() {
                 if (result.isSuccessful) {
                     Toast.makeText(
                         requireContext(),
-                        R.string.text_save_sucess_form_task_fragment,
+                        R.string.text_update_form_task,
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
@@ -166,8 +165,7 @@ class TodoFragment : Fragment() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(requireContext(), R.string.erro_generic, Toast.LENGTH_SHORT)
-                        .show()
+                    Log.i("INFOTESTE","onCanceled:")
                 }
 
             })
