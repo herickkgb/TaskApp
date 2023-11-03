@@ -2,7 +2,7 @@
 
 ## 🚀 Ferramentas utilizadas
 
-O "TaskFlow" é um aplicativo desenvolvido para dispositivos Android, projetado para simplificar a gestão de tarefas diárias de forma eficiente e organizada. Utilizando tecnologias modernas como Kotlin, MVVM, Firebase, Navigation e outras, o aplicativo oferece uma experiência robusta e amigável aos usuários.
+O "TaskApp" é um aplicativo desenvolvido para dispositivos Android, projetado para simplificar a gestão de tarefas diárias de forma eficiente e organizada. Utilizando tecnologias modernas como Kotlin, MVVM, Firebase, Navigation e outras, o aplicativo oferece uma experiência robusta e amigável aos usuários.
 
 **Tecnologias Utilizadas:**
 
