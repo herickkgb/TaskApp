@@ -1,4 +1,4 @@
-**Apresentação do Projeto "Taskapp: Simplificando Suas Tarefas"**
+**Apresentação do Projeto "TaskApp: Simplificando Suas Tarefas"**
 
 ## 🚀 Ferramentas utilizadas
 
